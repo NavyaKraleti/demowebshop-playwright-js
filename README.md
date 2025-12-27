@@ -212,6 +212,15 @@ This keeps tests readable and maintainable.
 
 ---
 
+### 📂 Included Report
+A sample HTML test report is included in the repository under:
+
+playwright-report/
+
+Reviewers can open index.html directly without running tests.
+
+---
+
 ### 🙌 Thank You
 
 This assignment demonstrates:
