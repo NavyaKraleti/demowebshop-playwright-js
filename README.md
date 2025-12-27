@@ -160,11 +160,17 @@ playwright-report/index.html
 ## 🧠 What the Test Does (End-to-End Flow)
 
 1️⃣ Register new user (random email)
+
 2️⃣ Add three products to cart (from JSON)
+
 3️⃣ Estimate shipping
+
 4️⃣ Validate price calculation
+
 5️⃣ Checkout with random billing data
+
 6️⃣ Place order
+
 7️⃣ Verify success message
 
 All using **Page Objects** so the logic remains clean and reusable.
