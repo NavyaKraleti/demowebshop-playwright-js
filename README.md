@@ -1,106 +1,105 @@
-# Demo Web Shop – Playwright Automation (JavaScript)
+# 🚀 Demo Web Shop – Playwright UI Automation (JavaScript)
 
-This project automates an end-to-end purchase flow on:
+UI Automation assignment using **Playwright + JavaScript** following best practices such as:
 
-```
-https://demowebshop.tricentis.com/
-```
+* ✅ Page Object Model (POM)
+* ✅ Data-driven testing (JSON)
+* ✅ Environment variables for sensitive data
+* ✅ HTML test reports
+* ✅ Clean, reusable code structure
 
-The scenario covered:
+The test automates a **complete end-to-end checkout** on:
 
-1. Register a new user (email generated dynamically)
-2. Add multiple products to the cart
-3. Verify cart totals
-4. Complete checkout
-5. Generate an HTML test report
+[https://demowebshop.tricentis.com/]
 
-The project follows the **Page Object Model** design pattern and uses **external JSON files** for test data.
+It registers a user, adds products, validates cart totals, and places an order.
 
 ---
 
-## Project Structure
+## 🏗 Project Structure
 
 ```
-src/
- ├── data/
- │   ├── products.json
- │   └── user.json
- │
- ├── pages/
- │   ├── register.page.js
- │   ├── navigation.page.js
- │   ├── cart.page.js
- │   └── checkout.page.js
- │
- ├── tests/
- │   └── placeOrder.spec.js
- │
- └── playwright-report/   (auto-generated after execution)
-```
-
----
-
-## Technologies Used
-
-* Playwright (JavaScript)
-* Page Object Model (POM)
-* HTML Report (Playwright Reporter)
-* JSON as external data source
-* Environment variables (no credentials stored in code)
-
----
-
-## Environment Variables (Required)
-
-Create a file named **.env** in the project root and add:
-
-```
-EMAIL_DOMAIN=yopmail.com
-```
-
-The test automatically generates unique emails like:
-
-```
-test1738000000@yopmail.com
+demowebshop-playwright-js
+│
+├── src
+│   ├── pages
+│   │   ├── register.page.js
+│   │   ├── navigation.page.js
+│   │   ├── cart.page.js
+│   │   └── checkout.page.js
+│   │
+│   ├── tests
+│   │   └── placeOrder.spec.js
+│   │
+│   └── data
+│       ├── products.json
+│       └── user.json
+│
+├── playwright.config.js
+├── package.json
+└── README.md
 ```
 
 ---
 
-## Install & Run
+## ⚙️ Prerequisites
 
-### Install dependencies
+Install:
+
+* Node.js (v18+ recommended)
+* Git
+* VS Code
+
+Verify:
+
+```
+node -v
+npm -v
+git --version
+```
+
+---
+
+## 📥 Installation
+
+Clone the repo:
+
+```
+git clone https://github.com/NavyaKraleti/demowebshop-playwright-js
+cd demowebshop-playwright-js
+```
+
+Install dependencies:
 
 ```
 npm install
 ```
 
-### Run test
+Install Playwright browsers:
 
 ```
-npx playwright test
-```
-
-### View HTML report
-
-```
-npx playwright show-report
+npx playwright install
 ```
 
 ---
 
-## External Data Files
+## 🔐 Environment Variable (Email Domain)
 
-### user.json
+We generate a random email each run and append a domain from an environment variable.
+
+Create a `.env` file in the project root:
 
 ```
-{
-  "firstName": "Test",
-  "lastName": "User",
-  "password": "Test@0101"
-}
+EMAIL_DOMAIN=yopmail.com
 ```
 
-### products.json
+> ⚠️ No credentials or API keys are stored in the project.
+
+---
+
+## 📊 Data-Driven Inputs (JSON)
+
+### Products (data/products.json)
 
 ```
 {
@@ -112,60 +111,108 @@ npx playwright show-report
 }
 ```
 
----
-
-## Page Object Model Overview
-
-Each feature has its own reusable class:
-
-* **RegisterPage** – user registration
-* **NavigationPage** – navigating & adding products
-* **CartPage** – shipping + total validation
-* **CheckoutPage** – billing + order completion
-
-This keeps the test clean, modular and easy to maintain.
-
----
-
-## Reporting
-
-HTML reporting is configured in `playwright.config.js`:
+### User Data (data/user.json)
 
 ```
-reporter: [
-  ['html', { outputFolder: 'playwright-report', open: 'never' }]
-]
+{
+  "firstName": "Test",
+  "lastName": "User",
+  "password": "Test@0101"
+}
 ```
 
-Open the latest report any time:
+The script reads this data dynamically during test execution.
+
+---
+
+## ▶️ Running the Test
+
+Headless (default):
+
+```
+npx playwright test
+```
+
+Run in UI mode (to visually watch execution):
+
+```
+npx playwright test --ui
+```
+
+---
+
+## 📑 Reports (HTML)
+
+After execution, open the HTML report:
 
 ```
 npx playwright show-report
 ```
 
----
+Path (auto-generated):
 
-## Requirement Mapping
-
-| Requirement                | Implemented         |
-| -------------------------- | ------------------- |
-| Page Object Model          | ✔ Yes               |
-| Reporting implemented      | ✔ HTML Reporter     |
-| Data from external JSON    | ✔ Yes               |
-| Environment variables used | ✔ Yes               |
-| Project executable         | ✔ Runs successfully |
+```
+playwright-report/index.html
+```
 
 ---
 
-## Notes
+## 🧠 What the Test Does (End-to-End Flow)
 
-* No personal credentials are stored anywhere
-* Emails are dynamically generated each run
-* Test is stable and re-usable
-* Designed to demonstrate automation best practices
+1️⃣ Register new user (random email)
+2️⃣ Add three products to cart (from JSON)
+3️⃣ Estimate shipping
+4️⃣ Validate price calculation
+5️⃣ Checkout with random billing data
+6️⃣ Place order
+7️⃣ Verify success message
+
+All using **Page Objects** so the logic remains clean and reusable.
 
 ---
 
-### End of README
+## 🧱 Page Object Model (POM)
+
+Each screen action is written in its own class:
+
+* `RegisterPage` → handles user registration
+* `NavigationPage` → selects products
+* `CartPage` → validates totals and checkout
+* `CheckoutPage` → billing + confirmation
+
+This keeps tests readable and maintainable.
+
+---
+
+## 📝 Deliverables Checklist
+
+| Requirement               | Status                       |
+| ------------------------- | ---------------------------- |
+| Page Object Model         | ✅ Done                       |
+| Reporting Implemented     | ✅ Playwright HTML Reports    |
+| Data from external file   | ✅ products.json & user.json  |
+| Executable Project        | ✅ Fully runnable             |
+| GitHub Repo               | ✅ Uploaded                   |
+| No credentials in code    | ✅ Using environment variable |
+| README with usage details | ✅ Completed                  |
+
+---
+
+## 🎯 How to Extend
+
+* Add more products → update `products.json`
+* Change user defaults → update `user.json`
+* Switch environments → update `.env`
+
+---
+
+### 🙌 Thank You
+
+This assignment demonstrates:
+
+✔ automation best practices
+✔ structured POM design
+✔ real-world checkout workflow
+✔ clean reporting and data handling
 
 ---
