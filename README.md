@@ -1,6 +1,9 @@
 # Demo Web Shop – Playwright Automation (JavaScript)
 
-This project automates an end-to-end purchase flow on: https://demowebshop.tricentis.com/
+This project automates an end-to-end purchase flow on:
+
+```
+https://demowebshop.tricentis.com/
 ```
 
 The scenario covered:
@@ -47,7 +50,7 @@ src/
 
 ---
 
-## Environment Variables
+## Environment Variables (Required)
 
 Create a file named **.env** in the project root and add:
 
@@ -56,7 +59,10 @@ EMAIL_DOMAIN=yopmail.com
 ```
 
 The test automatically generates unique emails like:
+
+```
 test1738000000@yopmail.com
+```
 
 ---
 
@@ -64,15 +70,21 @@ test1738000000@yopmail.com
 
 ### Install dependencies
 
+```
 npm install
+```
 
 ### Run test
 
+```
 npx playwright test
+```
 
 ### View HTML report
 
+```
 npx playwright show-report
+```
 
 ---
 
@@ -154,6 +166,6 @@ npx playwright show-report
 
 ---
 
-End of README
+### End of README
 
 ---
